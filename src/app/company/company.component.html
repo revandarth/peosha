@@ -1,0 +1,31 @@
+<div fxLayout="column" fxFlex="100" class="full-wrapper">
+  <div class="card-wrapper" >
+    <mat-card class="box">
+      <form class="form-wrapper" [formGroup]="addOrg" (ngSubmit)="addCompany()">
+        <h1 class="title">Add Organisation</h1>
+        <mat-card-content class="body">
+          <div fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
+            <div class="company-btn">
+              <mat-icon>domain</mat-icon>
+            </div>
+              <mat-form-field class="input">
+                <input matInput placeholder="Company Name" formControlName="name" />
+              </mat-form-field >
+              <div class="terms">
+                <mat-checkbox formControlName="agreed">
+                  <label>I verify that I am the official representative of this
+                    company and have the right to act on behalf of the company in the
+                     creation of this page.</label>
+                   </mat-checkbox>
+              </div>
+              <div *ngIf="error.err" class="error text-left">{{error.errText}}</div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="center">
+            <!-- <button mat-raised-button  uiSref="dashboard">Cancel</button> -->
+            <button mat-raised-button class="btn-brand" type="submit"  [disabled]="!addOrg.valid">Create</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+<div>

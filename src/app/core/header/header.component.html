@@ -1,0 +1,46 @@
+<mat-toolbar class="header" fxLayout="row" fxFlex="100">
+  <mat-toolbar-row>
+    <a  routerLink="/auth/dashboard" class="redirect">Blockedin</a>
+    <span class="right-spacer"></span>
+    <div class="right-menu">
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="menu" disabled>
+          <span>Change Password</span>
+        </button>
+        <mat-list>
+          <mat-list-item *ngFor="let org of orgData">
+              <a routerLink="/auth/company/admin/{{org.org_id}}">{{org.name}}</a>
+          </mat-list-item>
+          <!-- <mat-divider></mat-divider> -->
+        </mat-list>
+        <button mat-menu-item (click)="logout()" >
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+      <button mat-icon-button class="menu" disabled>
+          <mat-icon>notifications_none</mat-icon>
+      </button>
+      <button mat-icon-button class="menu" disabled>
+          <mat-icon>people</mat-icon>
+      </button>
+      <button mat-icon-button class="menu"  routerLink="/auth/jobs">
+          <mat-icon>work</mat-icon>
+      </button>
+    </div>
+    <button mat-icon-button class="menu"  [matMenuTriggerFor]="moremenu" yPosition="below">
+        <mat-icon>apps</mat-icon>
+    </button>
+    <mat-menu #moremenu="matMenu">
+      <button mat-menu-item routerLink="/auth/jobs/post">
+        <span>Post Job</span>
+      </button>
+      <button mat-menu-item class="menu" routerLink="/auth/company">
+        <span>Create Company</span>
+      </button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu" yPosition="below">
+        <mat-icon> account_circle</mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+</mat-toolbar>

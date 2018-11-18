@@ -1,0 +1,27 @@
+<div fxLayout="column" class="search">
+  <app-header fxLayout="row" fxLayoutAlign="start start"></app-header>
+  <div fxLayout="row" fxLayoutAlign="start start" class="full-wrapper">
+      <div class="card-wrapper" fxFlex="70">
+        <mat-card>
+          <div class="search-result">
+              <div *ngFor="let result of results;let odd=odd; let even=even;"  [ngClass]="{ odd: odd, even: even }" class="search-box">
+                <div class="search-wrap" fxLayout="row" fxLayoutAlign="start start">
+                    <div fxFlex="20" class="">
+                      <i class="material-icons user-icon">account_circle</i>
+                    </div>
+                    <div fxFlex>
+                      <div>{{result.bio.firstname}} {{result.bio.lastname}}</div>
+                      <div>{{result.bio.current_designation}}</div>
+                      <div><span *ngIf="result.bio.city">{{result.bio.city}},</span>{{result.bio.country}}</div>
+                      <button mat-button mat-raised-button class="connect-btn">Connect</button>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </mat-card>
+      </div>
+      <div fxFlex="28" class="right-wrapper">
+
+      </div>
+  </div>
+</div>

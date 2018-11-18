@@ -1,0 +1,83 @@
+<div class="page-wrapper">
+  <mat-card class="post-job">
+      <form class="form-wrapper" [formGroup]="postJob">
+        <mat-card-title class="title">Post a job</mat-card-title>
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+            <mat-form-field class="input">
+              <input matInput placeholder="Company Name" formControlName="org_id" [matAutocomplete]="cname" >
+              <mat-autocomplete #cname="matAutocomplete" [displayWith]="getDisplayFn">
+                <mat-option *ngFor="let emp of employers" [value]="emp" >
+                  <span>{{ emp.name }}</span>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field >
+              <mat-form-field class="input">
+                <input matInput placeholder="Designation" formControlName="designation">
+              </mat-form-field >
+              <!-- <div class="error" *ngIf="postJob.controls['designation'].hasError('required')">Please enter designation</div> -->
+              <mat-form-field class="input">
+                <input matInput placeholder="Team name" formControlName="teamname">
+              </mat-form-field>
+              <!-- <div class="error" *ngIf="postJob.controls['teamname'].hasError('required')">Please enter teamname</div> -->
+              <div fxLayoutAlign="space-between center" class="input">
+                <mat-form-field fxFlex="45" >
+                  <mat-select placeholder="Employment Type" formControlName="employment_type" >
+                    <mat-option *ngFor="let type of employmentType" [value]="type.id">
+                      {{ type.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="45" >
+                  <mat-select placeholder="Seniority Level" formControlName="experience" >
+                    <mat-option *ngFor="let exp of seniorLevel" [value]="exp.id">
+                      {{ exp.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <mat-form-field class="input">
+                <input matInput  placeholder="Skills" formControlName="skills">
+                <!-- <mat-chip-list #chipList>
+                  <mat-chip *ngFor="let skill of skill" [selectable]="true"
+                           [removable]="true" (remove)="remove(skill)" required>
+                    {{skill.skillset}}
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="Add skill..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)"  />
+                </mat-chip-list> -->
+              </mat-form-field >
+              <!-- <div class="error" *ngIf="postJob.controls['skills'].hasError('required')">Please enter skills</div> -->
+              <mat-form-field class="input">
+                <textarea matInput placeholder="Job description" formControlName="description" rows="6"></textarea>
+              </mat-form-field>
+              <mat-form-field class="input">
+                <input matInput placeholder="Location name" formControlName="location">
+              </mat-form-field>
+              <div>
+                <h3 class="application-title">Choose how you want people to apply</h3>
+                <mat-radio-group formControlName="notify_type">
+                  <mat-radio-button value="true" class="input"><b>Recommended:</b> Let applicants apply with their profile and notify me by email</mat-radio-button>
+                  <mat-form-field class="notify-inp">
+                    <input matInput placeholder="Email" formControlName="notify_email">
+                    <mat-error>{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                  <mat-radio-button value="false" class="input">Direct applicants to an external site to apply</mat-radio-button>
+                  <mat-form-field class="notify-inp">
+                    <input matInput placeholder="Company url" formControlName="notify_url">
+                  </mat-form-field>
+                </mat-radio-group>
+              </div>
+              <!-- <div class="error" *ngIf="postJob.controls['location'].hasError('required')">Please enter location</div> -->
+            </div>
+          </mat-card-content>
+          <mat-card-actions class="text-right">
+              <button mat-raised-button class="btn-brand" (click)="createJob()">Post job</button>
+          </mat-card-actions>
+      </form>
+  </mat-card>
+</div>

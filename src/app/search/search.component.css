@@ -1,0 +1,24 @@
+.search-result{
+  padding: 15px;
+}
+.search-box{
+  width: 49%;
+  display: inline-block;
+  margin-bottom: 2%;
+}
+.search-box .search-wrap{
+  height: 120px;
+  padding: 10px 15px;
+  border: 1px solid #f2f3f3;
+}
+
+.odd {margin-left: 2%;}
+
+.user-icon.material-icons{
+  font-size: 60px;
+  color:  #f2f3f3;
+}
+.connect-btn{
+    background-color: #039be5;
+    color: #fff;
+}

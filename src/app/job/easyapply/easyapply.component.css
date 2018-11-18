@@ -1,0 +1,28 @@
+.label-title{
+  padding-top: 10px;
+}
+.mat-dialog-actions{
+  float: right;
+}
+.remaining-space{
+  flex:1 1 auto;
+}
+.mat-toolbar{
+    background-color: #039be5;
+    color: #fff;
+    padding-left: 28px;
+    margin: -24px 0px 0px -24px;
+    width: 109.7%;
+}
+.input {
+  width: 100%;
+}
+.mat-dialog-actions:last-child{
+  margin: 0px !important;
+}
+.mat-dialog-actions{
+  padding: 0px !important;
+}
+.padding-top-14{
+   padding-top:14px;
+}

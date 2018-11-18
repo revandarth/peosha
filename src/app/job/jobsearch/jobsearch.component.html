@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>Jobs you may be interested in</mat-card-title>
+    <div  fxLayout="row wrap" fxLayoutGap="1.23%" fxLayoutAlign="start center">
+        <div *ngFor="let job of getjobs" class="" class="job-card-tile" fxFlex="19%" fxFlex.xs="100%" fxFlex.sm="100%">
+          <div  (click)="showJob(job._id)">
+              <!-- uiSref="jobs.view" [uiParams]="{ id: job._id }" -->
+              <div class="job-sponsored-container">
+                <figure class="logo-wrapper">
+                  <img src="/assets/images/default-company.png" width="60"/>
+                </figure>
+              </div>
+              <div class="job-card-content-wrapper">
+                <div class="job-card-title">{{job.designation}}</div>
+                <div *ngFor="let org of job.org_details" class="job-card-company-name">{{org.name}}</div>
+                <div class="job-location">{{job.location}}</div>
+                <div class="job-posted">
+                  <span>{{job.createdAt | timeAgo }}</span>
+                  <span class="save-label" (click)="savejob($event,job)" [ngClass]="{'saved': job.is_saved}"><i class="material-icons">bookmark</i></span>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</mat-card>

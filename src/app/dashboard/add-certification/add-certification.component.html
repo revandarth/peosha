@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <span>Certification</span>
+     <span class="remaining-space"></span>
+     <button mat-icon-button>
+       <mat-icon (click)="onCancel()">close</mat-icon>
+     </button>
+</mat-toolbar>
+<form novalidate [formGroup]="addCer" (ngSubmit)="updCertification()">
+  <div mat-dialog-content class="padding-top-14 mat-dialog-content">
+    <mat-form-field class="input">
+      <input matInput placeholder="Certification Name" formControlName="certification_name" />
+    </mat-form-field>
+    <mat-form-field class="input">
+      <input matInput placeholder="Authority" formControlName="authority" />
+    </mat-form-field>
+    <mat-form-field class="input">
+      <input matInput placeholder="License Number" formControlName="license_number" />
+    </mat-form-field>
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="Start Year" formControlName="start_year" />
+      </mat-form-field>
+    </div>
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="End Year" formControlName="end_year" />
+      </mat-form-field>
+    </div>
+    <mat-form-field class="input">
+      <input matInput placeholder="Certification Url" formControlName="certification_url" />
+    </mat-form-field>
+    <div class="width-100 padding-14">
+      <mat-checkbox formControlName="certification_expire">This Certification does not expire</mat-checkbox>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit">Save</button>
+  </div>
+</form>

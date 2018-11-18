@@ -1,0 +1,45 @@
+.mat-sidenav{
+  min-height: 95vh;
+  width: 15%;
+  background-color: #f2f2f2;
+  padding: 10px 10px;
+  float: left;
+  height: 100%;
+  top: 0px;
+}
+.page-wrapper{
+    top:0px !important;
+}
+.mat-drawer-container{
+   min-height: 90vh;
+   background-color: transparent;
+   top: 0px;
+}
+.nav-btn{
+  width:100%;
+  text-align: left;
+  padding-left: 50px;
+}
+.mat-sidenav-content{
+  padding: 20px 100px 20px 40px;
+  min-height: 90vh;
+}
+.mat-card{
+  background: #fff;
+  color: rgba(0,0,0,.87);
+  width: 74%;
+}
+.mat-sidenav .nav-btn i{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    font-size: 24px;
+    color: #616161;
+}
+.active{
+    color: inherit;
+    background-color: rgba(0,0,0,.12);
+}
+.section-wrapper{
+  margin-bottom: 20px;
+}

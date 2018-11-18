@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>Experience</h2>
+<mat-dialog-content>
+   <form [formGroup]="addExp">
+        <mat-form-field class="input">
+        <input matInput placeholder="Designation" formControlName="title">
+        <mat-error *ngIf="addExp.controls.title.errors && submitted">
+            <span *ngIf="addExp.controls.title.errors.minlength">Designation must have atleast 4 characters</span>
+        </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input">
+          <input matInput placeholder="Company name" formControlName="name">
+        </mat-form-field>
+        <div class="width-50" >
+          <mat-form-field class="input">
+            <mat-select placeholder="From Month" formControlName="fromMonth">
+                 <mat-option *ngFor="let month of months" [value]="month.id">
+                   {{month.value}}
+                 </mat-option>
+             </mat-select>
+           </mat-form-field>
+           <mat-form-field class="input">
+             <mat-select placeholder="From Year" formControlName="fromYear">
+                  <mat-option *ngFor="let year of years" [value]="year">
+                    {{year}}
+                  </mat-option>
+              </mat-select>
+              <mat-error *ngIf="addExp.controls.fromYear.errors && submitted">
+                  <span *ngIf="addExp.controls.fromYear.errors.max">Year should not greater than to year</span>
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="width-50 text-center current" *ngIf="addExp.value.current" >Current</div>
+         <div class="width-50" *ngIf="!addExp.value.current" >
+          <mat-form-field class="input">
+              <mat-select placeholder="To Month" formControlName="toMonth">
+                 <mat-option *ngFor="let month of months" [value]="month.id">
+                   {{month.value}}
+                 </mat-option>
+             </mat-select>
+           </mat-form-field>
+           <mat-form-field class="input">
+               <mat-select placeholder="To Year" formControlName="toYear">
+                  <mat-option *ngFor="let year of years" [value]="year">
+                    {{year}}
+                  </mat-option>
+              </mat-select>
+              <mat-error *ngIf="addExp.controls.toYear.errors && submitted">
+                  <span *ngIf="addExp.controls.toYear.errors.min">Year should not less than from year</span>
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="width-100 padding-14">
+          <mat-checkbox formControlName="current">Current Company</mat-checkbox>
+        </div>
+        <mat-form-field class="input">
+          <input matInput placeholder="Location" formControlName="location" >
+          <mat-error *ngIf="addExp.controls.location.errors && submitted">
+              <span *ngIf="addExp.controls.location.errors.minlength">Location must have atleast 4 characters</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input">
+          <textarea matInput formControlName="desc" placeholder="Description" rows="4"></textarea>
+          <mat-error *ngIf="addExp.controls.desc.errors && submitted">
+              <span *ngIf="addExp.controls.desc.errors.minlength">Description must have atleast 20 characters</span>
+              <span *ngIf="addExp.controls.desc.errors.maxlength">Description should not exceed more than 200 characters</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-checkbox formControlName="verify">Verify</mat-checkbox>
+        <mat-form-field class="width-50 ml4"  *ngIf="addExp.value.verify">
+          <input matInput placeholder="Employer email" formControlName="reference">
+        </mat-form-field>
+        <div class="mt4">
+          <ng2-file-input [id]="'SupportedDcouments'" (onAction)="onAction($event)" extensions="['pdf','docx']"
+           [browse-text]="'Browse'" [remove-text]="'Click to remove'"></ng2-file-input>
+        </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="addExperience()">{{!isEdit?'Add Experience':'Update Experience'}}</button>
+</mat-dialog-actions>

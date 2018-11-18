@@ -1,0 +1,23 @@
+<h2  mat-dialog-title color="primary">Skill</h2>
+<div mat-dialog-content >
+  <form novalidate>
+    <mat-form-field class="input padding-top-14">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let skill of skill" [selectable]="true"
+                 [removable]="true" (remove)="remove(skill)" required>
+          {{skill.skillset}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Add skill..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)"  />
+      </mat-chip-list>
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="addSkills()">Add</button>
+</mat-dialog-actions>

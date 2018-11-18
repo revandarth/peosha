@@ -1,0 +1,60 @@
+.form-wrapper{
+  width: 100%;
+}
+.text-center{
+  text-align: center;
+}
+.card-wrapper{
+  width:70%;
+  margin: 20px auto;
+}
+.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title{
+  margin-bottom: 0 !important;
+}
+/* .box .title{
+    color: #179ede;
+    border-bottom: 1px solid #eee;
+    padding: 16px 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font: 300 16px Roboto,sans-serif !important;
+} */
+.box{
+  padding: 0px;
+}
+.box .body{
+    padding: 20px 24px 0px;
+}
+.box .actions{
+  margin: 0;
+  padding: 20px 24px 24px;
+}
+.input{
+  width:100%;
+}
+.company-btn{
+  border: 1px solid #efefef;
+  width: 100px;
+  height: 100px;
+  border-radius: 2px;
+  background-color: #efefef;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+}
+.company-btn mat-icon{
+  font-size: 40px;
+  color: #888;
+  line-height: 30px;
+  left: 30px;
+  position: absolute;
+  top: 35px;
+}
+.mat-checkbox label{
+  white-space: normal !important;
+}
+.error{
+  width: 100%;
+  padding-top: 10px
+}

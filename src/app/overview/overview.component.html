@@ -1,0 +1,63 @@
+<div class="page-wrapper" fxLayout="column" >
+  <div fxLayout="column" fxFlex="100" class="section-wrapper">
+    <mat-card class="box" fxLayout="row" fxLayoutAlign="start start" fxFlex="100">
+      <div fxFlex="20">
+        <mat-icon class="ind-icon">domain</mat-icon>
+      </div>
+      <div fxFlex="80" fxLayoutAlign="center start" >
+        <div fxLayout="row" fxFlex="100">
+          <div *ngIf="orgData != null" class="org-name">{{orgData.name}}</div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div fxLayout="column" fxFlex="100" class="section-wrapper">
+    <mat-card class="box" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
+      <h2>About Us</h2>
+      <form class="form-wrapper" [formGroup]="updateOrg" (ngSubmit)="updateCompany()">
+        <div class="width-100">
+            <mat-form-field class="input">
+              <input matInput placeholder="Website" formControlName="website">
+            </mat-form-field>
+            <div class="width-50">
+              <mat-form-field class="input">
+                <mat-select placeholder="Company Size"  formControlName="size">
+                  <mat-option *ngFor="let emp of employees" [value]="emp.id">
+                    {{ emp.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="width-50">
+              <mat-form-field class="input">
+                <input matInput  placeholder="Industry Type"  formControlName="industry">
+              </mat-form-field >
+            </div>
+            <div class="width-50">
+              <mat-form-field class="input">
+                <input matInput  placeholder="Founded" formControlName="founded">
+              </mat-form-field >
+            </div>
+            <div class="width-50">
+              <mat-form-field class="input">
+                <mat-select placeholder="Company Type"  formControlName="companytype">
+                  <mat-option *ngFor="let org of orgtype" [value]="org.id">
+                    {{ org.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field >
+            </div>
+            <div class="width-100">
+              <mat-form-field class="input">
+                <input matInput placeholder="Head Quarters"  formControlName="headquarters">
+              </mat-form-field>
+            </div>
+            <mat-form-field class="input">
+              <textarea matInput placeholder="Description"  formControlName="description"></textarea>
+            </mat-form-field>
+            <button matButton type="submit">Update</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+<div>

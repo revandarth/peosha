@@ -1,0 +1,16 @@
+.mat-expanded .mat-expansion-panel-header{
+  height: 50px !important;
+  border-bottom: 1px solid #ddd;
+}
+.mat-expansion-panel-body{
+    padding: 24px !important;
+}
+.job-wrapper{
+  padding: 20px 0px;
+}
+.job-field{
+  padding-top:10px;
+}
+.job-field > b{
+  padding-right:10px;
+}

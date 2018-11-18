@@ -1,0 +1,28 @@
+mat-form-field{
+  width:100%;
+  padding-bottom: 10px;
+}
+.ind-icon{
+  color: #777;
+  font-size: 100px;
+}
+.org-name{
+  font-weight: 200;
+  font-size: 22px;
+}
+.page-wrapper{
+    top:0px !important;
+}
+.section-wrapper{
+  margin-bottom: 15px;
+}
+.input{
+  width: 100%;
+}
+.width-100{
+  width:100%;
+}
+.width-50{
+  width:49%;
+  display: inline-block;
+}

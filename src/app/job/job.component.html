@@ -1,0 +1,14 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" fxLayout="column"
+  fxLayoutAlign="start center">
+      <button mat-button class="nav-btn"routerLink="/auth/jobs" routerLinkActive="active"><i class="material-icons">work</i>Recommended Jobs</button>
+      <button mat-button class="nav-btn"routerLink="/auth/jobs/user" routerLinkActive="active"><i class="material-icons">work</i>Interested Jobs</button>
+      <button mat-button class="nav-btn" routerLink="/auth/jobs/post" routerLinkActive="active"><i class="material-icons">work</i>Post Job</button>
+      <button mat-button class="nav-btn" routerLink="/auth/jobs/user/saved" routerLinkActive="active"><i class="material-icons" >next_week</i>Active Jobs</button>
+      <button mat-button class="nav-btn" ><i class="material-icons" routerLinkActive="active">person_pin</i>Candidates</button>
+      <button mat-button class="nav-btn"><i class="material-icons" routerLinkActive="active">receipt</i>Relieving Letter</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+  <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

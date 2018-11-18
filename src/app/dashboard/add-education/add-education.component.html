@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Education</h2>
+<mat-dialog-content>
+  <form novalidate [formGroup]="addEdu" (ngSubmit)="updEducation()">
+    <mat-form-field class="input">
+      <input matInput placeholder="Institution Name" formControlName="institution_name" />
+    </mat-form-field>
+    <mat-form-field class="input">
+      <input matInput placeholder="Degree" formControlName="degree" />
+    </mat-form-field>
+    <mat-form-field class="input">
+      <input matInput placeholder="Major" formControlName="major" />
+    </mat-form-field>
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="Start Year" formControlName="start_year" />
+      </mat-form-field>
+    </div>
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="End Year" formControlName="end_year" />
+      </mat-form-field>
+    </div>
+    <mat-form-field class="input">
+      <input matInput placeholder="GPA" formControlName="gpa" />
+    </mat-form-field>
+    <mat-form-field class="input">
+      <textarea matInput placeholder="Description" formControlName="description" rows="5"></textarea>
+    </mat-form-field>
+    <div class="width-100 padding-14">
+      <mat-checkbox formControlName="verifed">Verify</mat-checkbox>
+      <mat-form-field class="width-50 ml4"  *ngIf="addEdu.value.verifed">
+        <input matInput placeholder="Email" formControlName="reference">
+      </mat-form-field>
+    </div>
+    <ng2-file-input [id]="'SupportedDcouments'" (onAction)="onAction($event)" extensions="['jpg','png','pdf','docx']"
+     [browse-text]="'Browse'" [remove-text]="'Click to remove'"></ng2-file-input>
+     <!-- (onInvalidDenied)="onInvalidDenied($event)"
+       [multiple]="true" (onRemoved)="onRemoved($event)" (onAdded)="onAdded($event)" -->
+    <!-- <input type="file" name="file" (change)="onFileChange($event)"/>-->
+    <input type="hidden" name="fileHidden" formControlName="document"/>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="updEducation()">Save</button>
+</mat-dialog-actions>

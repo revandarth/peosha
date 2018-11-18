@@ -1,0 +1,70 @@
+<div fxLayout="row" fxLayout.xs ="column" >
+  <div layout="column" fxLayoutAlign="center center" fxFill fxFlex.xs="0" fxFlex.sm="0" fxFlex="50" class="coverImage">
+  </div>
+    <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign.xs="start" fxFlex="50" fxFlex.xs="0" fxFlex.sm="0" fxLayoutAlign="center center" fxFill class="flex-container">
+      <div class="no-card" *ngIf="!IsLogin">
+        <form [formGroup]="registration" fxFlex="100" fxFlex.xs="100%"  fxLayout="column wrap" (ngSubmit)="doRegistration()" id="login-form">
+            <div class="logo">
+              <img src="./assets/images/fuse.svg"/>
+            </div>
+            <div class="login-title">
+                <h1>Welcome </h1>
+                <h5>Enter your details here for sign up:</h5>
+            </div>
+            <mat-form-field >
+              <input type="text" matInput placeholder="Name" formControlName="name"  >
+            </mat-form-field>
+            <mat-form-field >
+              <input type="email" matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+            <div class="error" *ngIf="isError">{{error}}</div>
+            <div class="terms" fxLayout="column wrap" fxLayoutAlign="start start" *ngIf="!IsLogin">
+              <mat-checkbox formControlName="terms">I read and accept terms and conditions</mat-checkbox>
+              <small *ngIf="registration.controls.terms.invalid && submitted" class="error text-left">
+                  Please select terms and conditions
+              </small>
+            </div>
+            <button mat-accent mat-raised-button class="btn-class" [disabled]="loading">Registration</button>
+            <!-- <div fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="8px">
+              <div class="line">
+                <h2><span>Or </span></h2>
+              </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutAlign="space-around center" >
+                <button   type="button" mat-raised-button mat-accent class="linkedin social-btn">
+                   <fa name="linkedin" animation="spin"></fa>
+                </button>
+                <button type="button" mat-raised-button mat-accent class="google social-btn">
+                  <fa name="google" animation="spin"></fa>
+                </button>
+            </div> -->
+          </form>
+      </div>
+      <div class="no-card" *ngIf="IsLogin">
+        <form [formGroup]="login" fxFlex="100" fxFlex.xs="100%"  fxLayout="column wrap" (ngSubmit)="doLogin()" id="login-form">
+            <div class="logo">
+              <img src="./assets/images/fuse.svg"/>
+            </div>
+            <div class="login-title">
+                <h1>Hi there! Welcome back </h1>
+                <h5>Enter your sign in details here:</h5>
+            </div>
+            <mat-form-field >
+              <input type="email" matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+            <div class="error" *ngIf="isError">{{error}}</div>
+            <button mat-accent mat-raised-button class="btn-class" [disabled]="loading">Login</button>
+        </form>
+      </div>
+      <div class="register" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="4px">
+          <span >{{IsLogin ?'Dont have an account ?' : 'Already have an account ?'}}</span>
+          <a (click)="toggleLogin()">{{IsLogin?'Registration':'Login'}}</a>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,185 @@
+<div fxLayout="column">
+  <div class="bio-container">
+    <mat-card>
+      <div class="bio-wrapper">
+          <div class="img-drop">
+              <div fxLayout="row" class="body bio-body"><!--  fxLayoutAlign="start center"  -->
+                  <div class="user-image" fxFlex="33">
+                      <div>
+                        <mat-icon class="ind-icon">domain</mat-icon>
+                      </div>
+                      <h3 *ngIf="orgData != null" class="username">
+                        {{orgData.name}}
+                          <div *ngIf="orgData.head_quarters && orgData.head_quarters.length > 0" class="location">
+                              <div *ngFor="let head of orgData.head_quarters">
+                                    <span><i class="material-icons">location_on</i></span>
+                                    <small>{{head.city}},</small>
+                                    <small>{{head.state}},</small>
+                                    <small>{{head.country}}</small>
+                              </div>
+                          </div>
+                      </h3>
+                  </div>
+                  <div fxFlex="33">
+                  </div>
+                  <div  fxFlex="33"  align="right">
+                      <div class="width-3 text-center pull-right">
+                        <strong class="text-xl">643</strong><br>
+                        <span class="text-light opacity-75 follow-text">followers</span>
+                      </div>
+                      <div class="width-3 text-center pull-right">
+                        <strong class="text-xl">108</strong><br>
+                        <span class="text-light opacity-75 follow-text">following</span>
+                      </div>
+                      <div class="overlay overlay-shade-bottom stick-bottom-left force-padding text-right">
+                        <a mat-icon-button matTooltipPosition="after" matTooltip="Contact me"><i class="material-icons">mail</i></a>
+                        <a mat-icon-button matTooltipPosition="after" matTooltip="Follow me"><i class="material-icons">theaters</i></a>
+                        <a mat-icon-button matTooltipPosition="after" matTooltip="Personal info"><i class="material-icons">mail</i></a>
+                      </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+  </div>
+  <div fxLayout="column" fxFlex="100">
+    <div class="card-wrapper">
+      <div fxLayout="column" >
+          <div fxLayout="row"  fxLayoutAlign="start start">
+            <mat-card class="box about-us" fxLayout="column" fxFlex="70"  fxLayoutAlign="start start">
+              <div fxFlex="100" fxLayout="column" style="width:100%">
+                  <div class="title">
+                    About Us
+                    <span class="remaining-space"></span>
+                    <button class="icon-add" (click)="editAbout = !editAbout" mat-icon-button *ngIf="editAbout">
+                        <mat-icon >edit</mat-icon>
+                    </button>
+                  </div>
+                  <div [hidden]="!editAbout" class="body">
+                    <div class="width-50 label-item">
+                        <label>Website</label>
+                        <div>{{orgData.website}}</div>
+                    </div>
+                    <div class="width-50 label-item">
+                        <label>Size</label>
+                        <div>{{getempText(orgData.size)}}</div>
+                    </div>
+                    <div class="width-50 label-item">
+                      <label>Industry type</label>
+                      <div>{{orgData.industry}}</div>
+                    </div>
+                    <div class="width-50 label-item">
+                      <label>Founded Year</label>
+                      <div>{{orgData.founded}}</div>
+                    </div>
+                    <div class="width-50 label-item">
+                      <label>Company type</label>
+                      <div>{{orgtypeText(orgData.company_type)}}</div>
+                    </div>
+                    <div class="width-100 label-item">
+                      <label>Description</label>
+                      <div>{{orgData.desc}}</div>
+                    </div>
+                  </div>
+                  <form class="form-wrapper" [formGroup]="updateOrg" (ngSubmit)="updateCompany()" [hidden]="editAbout">
+                    <div class="body about-us" >
+                        <mat-form-field class="input">
+                          <input matInput placeholder="Website" formControlName="website">
+                        </mat-form-field>
+                        <div class="width-50">
+                          <mat-form-field class="input">
+                            <mat-select placeholder="Company Size"  formControlName="size">
+                              <mat-option *ngFor="let emp of employees" [value]="emp.id">
+                                {{ emp.name }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="width-50">
+                          <mat-form-field class="input">
+                            <input matInput  placeholder="Industry Type"  formControlName="industry">
+                          </mat-form-field >
+                        </div>
+                        <div class="width-50">
+                          <mat-form-field class="input">
+                            <input matInput  placeholder="Founded" formControlName="founded">
+                          </mat-form-field >
+                        </div>
+                        <div class="width-50">
+                          <mat-form-field class="input">
+                            <mat-select placeholder="Company Type"  formControlName="company_type">
+                              <mat-option *ngFor="let org of orgtype" [value]="org.id">
+                                {{ org.name }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field >
+                        </div>
+                        <mat-form-field class="input" >
+                          <textarea matInput placeholder="Description"  formControlName="desc" rows="8"></textarea>
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <div fxFlex></div>
+                            <button mat-button type="button" class="mat-raised-button save" (click)="editAbout = !editAbout">Cancel</button>
+                            <button [disabled] = "updateOrg.invalid" mat-button type="submit" class="mat-raised-button save">Save</button>
+                        </mat-card-actions>
+                    </div>
+                  </form>
+              </div>
+              <div class="location-container" fxLayout="row" fxLayoutWrap fxLayoutAlign="start start" fxLayoutGap="10px">
+                    <h2 class="width-100 location-title">
+                        Locations
+                        <span class="remaining-space"></span>
+                        <button class="icon-add top" (click)="openLocation()" mat-icon-button >
+                            <mat-icon >add</mat-icon>
+                        </button>
+                    </h2>
+                    <mat-card *ngFor="let location of orgData.location" fxFlex="32" class="mt4">
+                      <div class="right">
+                        <div *ngIf="location.head_quarters" class="quarters"><i class="material-icons">star</i></div>
+                        <!-- <div class="quarters hover" (click)="openLocation(location)"><i class="material-icons">edit</i></div> -->
+                        <div class="quarters hover" (click)="deleteLocation(location.index)"><i class="material-icons">delete</i></div>
+                      </div>
+                      <div class="content">
+                        <div class="medium">{{location.building_name}}</div>
+                        <small *ngIf="location.address1 != ''">{{location.address1}}</small>
+                        <small *ngIf="location.city != ''">{{location.city}}</small>
+                        <small *ngIf="location.state != ''">{{location.state}}</small>
+                        <small *ngIf="location.country != ''">{{location.country}}</small>
+                      </div>
+                  </mat-card>
+              </div>
+            </mat-card>
+            <div fxFlex="28" class="right-wrapper">
+              <section class="friends">
+                  <mat-card class="light-theme">
+                    <mat-card-title class="title">Friends</mat-card-title>
+                    <mat-card-content>
+                        <mat-list role="list" class="frnd-list">
+                          <mat-list-item role="listitem" >
+                              <img src="/assets/images/avatar2.jpg" alt="">
+                              <h3 matLine>Abbey Johnson </h3>
+                              <button mat-button>Follow <i class="material-icons">add</i></button>
+                              <p matLine><small>Lorem ipsum dolor sit amet, consectetur adipisicing</small></p>
+                          </mat-list-item>
+                          <mat-list-item role="listitem">
+                              <img src="/assets/images/avatar2.jpg" alt="">
+                              <h3 matLine>Abbey Johnson </h3>
+                              <button mat-button>Follow <i class="material-icons">add</i></button>
+                              <p matLine><small>Lorem ipsum dolor sit amet, consectetur adipisicing</small></p>
+                          </mat-list-item>
+                          <mat-list-item role="listitem">
+                              <img src="/assets/images/avatar2.jpg" alt="">
+                              <h3 matLine>Abbey Johnson</h3>
+                              <button mat-button>Follow <i class="material-icons">add</i></button>
+                              <p matLine><small>Lorem ipsum dolor sit amet, consectetur adipisicing</small></p>
+                          </mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+                  </mat-card>
+               </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

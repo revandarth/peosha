@@ -1,0 +1,50 @@
+mat-form-field{
+  width:100%;
+  color: rgba(0,0,0,0.55);
+}
+.post-job{
+  padding: 0px;
+}
+.form-wrapper{
+  width: 100%;
+  margin: 0 auto;
+  padding: 2% 0;
+  padding-top: 0;
+}
+.mat-card-content{
+  padding: 20px;
+}
+.text-right{
+  text-align: right;
+}
+.application-title{
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title{
+  margin-bottom: 0 !important;
+}
+.mat-card-actions {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0px 8px;
+}
+.width-150{
+  width:150px;
+}
+.notify-inp{
+  width:50%;
+  margin-bottom: 10px;
+}
+.input{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.title{
+  font-size: 20px;
+  font-weight: 400;
+  color: #039be5;
+  padding-bottom: 10px;
+}

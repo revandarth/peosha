@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{ edit ?'Update location':'Add a location'}}</h2>
+<mat-dialog-content >
+    <form [formGroup]="addLoc">
+        <div class="width-50" >
+            <mat-form-field class="input padding-top-14">
+              <input matInput placeholder="Building Name" formControlName="building_name">
+            </mat-form-field>
+            <small *ngIf="addLoc.controls.building_name.errors" class="error text-left">
+                <span *ngIf="addLoc.controls.building_name.errors.minlength">Building name must have atleast 4 characters</span>
+            </small>
+        </div>
+        <div class="width-50" >
+            <mat-form-field class="input">
+              <input matInput placeholder="Address" formControlName="address1">
+            </mat-form-field>
+        </div>
+        <div class="width-50" >
+          <mat-form-field class="input">
+              <input matInput placeholder="State" formControlName="state">
+           </mat-form-field>
+         </div>
+         <div class="width-50" >
+           <mat-form-field class="input">
+             <input matInput placeholder="City" formControlName="city">
+            </mat-form-field>
+        </div>
+        <div class="width-50" >
+          <mat-form-field class="input">
+            <input matInput placeholder="Country" formControlName="country" >
+          </mat-form-field>
+        </div>
+        <div class="width-50 padding-14">
+          <mat-checkbox formControlName="head_quarters" name="Head quaters">Head quarters</mat-checkbox>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions  align="end">
+  <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-raised-button (click)="addLocation()" [disabled]="!addLoc.valid">{{ edit ?'Update':'Add'}} location</button>
+</mat-dialog-actions>

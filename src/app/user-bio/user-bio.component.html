@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+    <span>Edit Bio</span>
+     <span class="remaining-space"></span>
+     <button mat-icon-button>
+       <mat-icon (click)="onCancel()">close</mat-icon>
+     </button>
+</mat-toolbar>
+<form novalidate [formGroup]="editIntro" (ngSubmit)="updateIntro()">
+  <div mat-dialog-content class="padding-top-14">
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="First Name" formControlName="firstname" />
+      </mat-form-field>
+    </div>
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="Last Name" formControlName="lastname" />
+      </mat-form-field>
+    </div>
+    <mat-form-field class="input">
+      <textarea matInput placeholder="Headline" formControlName="headline" rows="4"></textarea>
+    </mat-form-field>
+    <mat-form-field class="input">
+      <input matInput placeholder="Education" formControlName="education" />
+    </mat-form-field>
+    <mat-form-field class="input">
+      <input matInput placeholder="Current Position" formControlName="current_designation" />
+    </mat-form-field>
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="Country" formControlName="country" />
+      </mat-form-field>
+    </div>
+    <div class="width-50" >
+      <mat-form-field class="input">
+        <input matInput placeholder="State" formControlName="state" />
+      </mat-form-field>
+    </div>
+    <mat-form-field class="input">
+      <input matInput placeholder="City" formControlName="city" />
+    </mat-form-field>
+    <mat-form-field class="input">
+      <textarea matInput placeholder="Summary" formControlName="summary"  rows="7"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button type="submit">Update</button>
+  </div>
+</form>

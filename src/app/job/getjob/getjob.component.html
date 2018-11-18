@@ -1,0 +1,25 @@
+<div class="page-wrapper">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let job of getjobs">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div fxLayout="row" fxFlex>
+              <span fxFlex="50" >{{job.designation}}</span>
+              <span fxFlex="50" >{{job.teamname}}</span>
+              <span fxFlex="50" >{{job.createdAt | date: 'dd/MM/yyyy hh:mm a'}}</span>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="job-wrapper">
+        <!-- <div class="job-field"><b>Company name:</b>{{job.designation}}</div> -->
+        <div class="job-field"><b>Job Title:</b>{{job.designation}}</div>
+        <div class="job-field"><b>Team Name:</b>{{job.teamname}}</div>
+        <div class="job-field"><b>Skills:</b>{{job.skills}}</div>
+        <div class="job-field"><b>Location:</b>{{job.location}}</div>
+          <div class="job-field"><b>Posted Date:</b>{{job.createdAt | date: 'dd/MM/yyyy hh:mm a'}}</div>
+        <div class="job-field"><b>Total Applicants:</b>{{job.applicants.length}}</div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div *ngIf="getjobs.length == 0">No jobs found</div>
+</div>

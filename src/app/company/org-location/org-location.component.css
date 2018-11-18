@@ -1,0 +1,11 @@
+.input {
+  width: 100%;
+}
+.width-50{
+  width:49%;
+  display: inline-block;
+}
+.current{
+  vertical-align: middle;
+  height: 55px;
+}

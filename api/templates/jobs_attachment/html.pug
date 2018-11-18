@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    style
+      include style.css
+  body
+    div.header Blockedin
+    div.content
+      h1.title Hi #{name}!
+      table
+        td.small
+          img.user-thumbnail(src="./../api/templates/jobs_attachment/user-icon.jpg" alt="User name")
+        td
+          h4.sub-title Naveen.M
+          div.profile-name UI Developer
+          div.profile-name Bangalore,India
+          div.pb10  applied for the UI Developer position.
+          a.btn View profile

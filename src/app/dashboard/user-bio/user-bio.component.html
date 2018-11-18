@@ -1,0 +1,44 @@
+<h2 mat-dialog-title color="primary">Update Bio</h2>
+<div mat-dialog-content >
+  <form novalidate [formGroup]="editIntro">
+      <div class="width-50" >
+        <mat-form-field class="input">
+          <input matInput placeholder="First Name" formControlName="firstname" />
+        </mat-form-field>
+      </div>
+      <div class="width-50" >
+        <mat-form-field class="input">
+          <input matInput placeholder="Last Name" formControlName="lastname" />
+        </mat-form-field>
+      </div>
+      <mat-form-field class="input">
+        <textarea matInput placeholder="Headline" formControlName="headline" rows="4"></textarea>
+      </mat-form-field>
+      <mat-form-field class="input">
+        <input matInput placeholder="Education" formControlName="education" />
+      </mat-form-field>
+      <mat-form-field class="input">
+        <input matInput placeholder="Current Position" formControlName="current_designation" />
+      </mat-form-field>
+      <div class="width-50" >
+        <mat-form-field class="input">
+          <input matInput placeholder="Country" formControlName="country" />
+        </mat-form-field>
+      </div>
+      <div class="width-50" >
+        <mat-form-field class="input">
+          <input matInput placeholder="State" formControlName="state" />
+        </mat-form-field>
+      </div>
+      <mat-form-field class="input">
+        <input matInput placeholder="City" formControlName="city" />
+      </mat-form-field>
+      <mat-form-field class="input">
+        <textarea matInput placeholder="Summary" formControlName="summary"  rows="7"></textarea>
+      </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="updateIntro()">Update</button>
+</mat-dialog-actions>

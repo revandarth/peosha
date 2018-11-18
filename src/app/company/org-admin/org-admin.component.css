@@ -1,0 +1,147 @@
+mat-form-field{
+  width:100%;
+  padding-bottom: 10px;
+}
+.card-wrapper{
+    padding:20px 0px;
+    position: relative;
+    width:95%;
+    margin: 0 auto;
+}
+.ind-icon{
+  color: #777;
+  font-size: 100px;
+}
+.org-name{
+  font-weight: 200;
+  font-size: 22px;
+}
+.dark-theme{
+    background-color: #20252b;
+    border-color: #20252b;
+    color: #ffffff;
+    padding: 24px;
+}
+.light-theme{
+    background-color: #fff;
+    border-color: #20252b;
+    color: #179ede;
+    padding: 0px;
+}
+.frnd-list .mat-line{
+      padding-left: 40px;
+}
+.box .body{
+  padding:20px;
+}
+ mat-card.about-us{
+    margin-bottom: 20px;
+    padding: 0px !important;
+}
+.location{
+  position: relative;
+  color: #bbb;
+  padding-left: 20px;
+}
+.location-container{
+  padding: 20px 20px;
+  border-top:1px solid #ddd;
+  width:100%;
+}
+.location-container > mat-card{
+  margin-bottom: 8px;
+  padding: 16px 20px;
+  position: relative;
+  height: 100px;
+}
+.location-container .right{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  color: #ccc;
+}
+.location-container .hover{
+  display: none;
+}
+.location-container >mat-card:hover .hover{
+  display: block;
+}
+.location-container .material-icons{
+  font-size: 18px;
+  cursor: pointer;
+}
+.location-container .content{
+  width: 220px;
+}
+.location-container .location-title{
+  margin: 0px;
+  position: relative;
+  font-size: 20px;
+  font-weight: 400;
+}
+.top{
+  right: 0px !important;
+  top: -2px !important;
+  font-size: 20px !important;
+}
+.top .mat-icon{
+  font-size: 24px;
+}
+.icon-add {
+    padding: 0;
+    width: 30px;
+    border-radius: 50%;
+    border: 0px;
+    height: 30px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background-color: #fff;
+    color: #179ede;
+    outline: none;
+    cursor: pointer;
+}
+.frnd-list img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+}
+.section-wrapper{
+  margin-bottom: 15px;
+}
+.input{
+  width: 100%;
+}
+.width-100{
+  width:100%;
+}
+.width-50{
+  width:49%;
+  display: inline-block;
+}
+.about-us{
+  position: relative;
+}
+.edit{
+  position: absolute;
+  right:20px;
+  top:20px;
+}
+.label-item{
+  margin-bottom: 20px;
+ }
+.label-item label{
+  font-size: 12px;
+  display: block;
+  color: #039be5;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.label-item div{
+  padding-left: 10px;
+}
+.mat-button.save{
+  background-color: #039be5;
+  color: #fff;
+}

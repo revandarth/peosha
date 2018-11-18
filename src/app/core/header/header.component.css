@@ -1,0 +1,23 @@
+.header{
+  background-color:  #fff;
+  color:rgba(49, 53, 52, 0.6);
+  border-bottom: 1px solid #efefef;
+  top: 0;
+  padding: 0px 10px;
+  /* box-shadow: 0 3px 5px -1px rgba(0,0,0,.2);
+  z-index: 1;
+  position: fixed;
+   */
+}
+.right-spacer{
+  flex: 1 1 auto;
+}
+.header .menu md-icon{
+    font-size: 28px;
+    line-height: 20px;
+}
+a.redirect{
+  color: #039be5;
+  text-decoration: none;
+  padding: 10px 10px;
+}

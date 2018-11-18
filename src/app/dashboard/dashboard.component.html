@@ -1,0 +1,266 @@
+<div class="bio-container">
+  <mat-card>
+    <div class="bio-wrapper">
+        <div class="img-drop">
+            <div fxLayout="row" class="body bio-body"><!--  fxLayoutAlign="start center"  -->
+                <div class="user-image" fxFlex="33">
+                    <mat-icon class="user-icon">account_circle</mat-icon>
+                    <h3 class="username">{{bioData.firstname}}<br/>
+                        <small *ngIf="bioData.current_designation">{{bioData.current_designation}}</small>
+                    </h3>
+                </div>
+                <div fxFlex="33">
+                </div>
+                <div fxFlex="33" align="right">
+                    <div class="width-3 text-center pull-right">
+                      <strong class="text-xl">643</strong><br>
+                      <span class="text-light opacity-75 follow-text">followers</span>
+                    </div>
+                    <div class="width-3 text-center pull-right">
+          						<strong class="text-xl">108</strong><br>
+          						<span class="text-light opacity-75 follow-text">following</span>
+          					</div>
+                    <div class="overlay overlay-shade-bottom stick-bottom-left force-padding text-right">
+              				<a mat-icon-button matTooltipPosition="after" matTooltip="Contact me"><i class="material-icons">mail</i></a>
+              				<a mat-icon-button matTooltipPosition="after" matTooltip="Follow me"><i class="material-icons">theaters</i></a>
+              				<a mat-icon-button matTooltipPosition="after" matTooltip="Personal info"><i class="material-icons">mail</i></a>
+              			</div>
+                 </div>
+              </div>
+          </div>
+      </div>
+      <div class="user-info" >
+          <button mat-icon-button class="icon-add" (click)="updateIntro()">
+              <mat-icon class="material-icons">edit</mat-icon>
+          </button>
+          <div class="label-title">
+            <span *ngIf="bioData.firstname">{{bioData.headline}}</span>
+            <span *ngIf="bioData.education"> | {{bioData.education}}</span>
+          </div>
+          <div class="label-title">
+              <!-- <i class="material-icons">location_on</i> -->
+              <span *ngIf="bioData.country">{{bioData.country}},</span>
+              <span *ngIf="bioData.state">{{bioData.state}},</span>
+              <span *ngIf="bioData.city">{{bioData.city}}</span>
+          </div>
+          <div class="label-title" [class.heignt-40]="!showingMore">
+            <span *ngIf="bioData.summary">{{bioData.summary}}</span>
+          </div>
+          <div class="show-more" *ngIf="bioData.summary && bioData.summary.length > 60">
+            <button (click)="showMore()" mat-button>{{!showingMore?'Show More':'Show Less'}}</button>
+          </div>
+      </div>
+  </mat-card>
+</div>
+<div fxLayout="row" fxLayoutAlign="start start" class="full-wrapper">
+    <div class="card-wrapper" fxFlex="70">
+        <mat-card>
+          <div class="title">
+            Professional Details
+            <span class="remaining-space"></span>
+            <button class="icon-add" (click)="addExperience()">
+                <mat-icon class="material-icons">add</mat-icon>
+            </button>
+          </div>
+          <div class="body">
+            <mat-list fxLayout="column">
+              <div *ngFor="let exp of experience;let i = index;">
+                <mat-list-item  class="profile-section-item" *ngIf="exp != null">
+                    <mat-icon matListIcon >redeem</mat-icon>
+                    <h3 matLine class="institute-name"> {{exp.name}} </h3><!-- <i class="material-icons ">beenhere</i> -->
+                    <p matLine class="text-medium lh5">
+                      <span> {{exp.title}} </span>
+                    </p>
+                    <p matLine class="lh5">
+                      <span>{{getMonthText(exp.fromMonth)}} {{exp.fromYear}} </span>
+                      <span class="demo-2" *ngIf="!exp.current"> -- {{getMonthText(exp.toMonth)}} {{exp.toYear}}</span>
+                      <span class="demo-2" *ngIf="exp.current"> -- Present</span>
+                    </p>
+                    <p matLine *ngIf="exp.location != ''" class="lh5">
+                      <span> {{exp.location}} </span>
+                    </p>
+                    <!-- <p matLine *ngIf="exp.filename != ''" class="lh5">
+                      <span><a href="http://localhost:3000/{{exp.document}}" download>{{exp.filename}}</a> </span>
+                    </p> -->
+
+                    <!-- <pdf-viewer [src]="exp.document"
+                  [(page)]="page"
+                  [rotation]="rotation"
+                  [original-size]="originalSize"
+                  [fit-to-page]="fitToPage"
+                  (after-load-complete)="afterLoadComplete($event)"
+                  [zoom]="zoom"
+                  [show-all]="showAll"
+                  [stick-to-page]="stickToPage"
+                  [render-text]="renderText"
+                  [external-link-target]="'blank'"
+                  [autoresize]="autoresize"
+                  (error)="onError($event)"
+                  (on-progress)="onProgress($event)"
+      ></pdf-viewer> -->
+                    <p matLine *ngIf="exp.desc != ''" class="mt4 lh5">
+                      <span> {{exp.desc}} </span>
+                    </p>
+                    <button mat-icon-button (click)="addExperience(exp)" class="edit">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="deleteExperience(exp,i)" class="edit delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <p matLine class="thumbnail" *ngIf="exp.document && exp.document != ''">
+                     <pdf-viewer [src]='exp.document' style="display: block;" [show-all]="showAll"
+                       [fit-to-page]="fitToPage" [render-text]="renderText" [stick-to-page]="true" [original-size]="true"></pdf-viewer>
+                    <p>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                </div>
+            </mat-list>
+            <p *ngIf="experience.length == 0" class="no-result">No experience</p>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="title">
+            Education Details
+            <span class="remaining-space"></span>
+            <button class="icon-add" (click)="OpenEducation()">
+                <mat-icon class="material-icons">add</mat-icon>
+            </button>
+          </div>
+          <div class="body">
+            <p *ngIf="education.length == 0" class="no-result">No education</p>
+            <mat-list fxLayout="column">
+              <div *ngFor="let edu of education;let i= index;">
+                  <mat-list-item  class="profile-section-item">
+                      <mat-icon matListIcon>school</mat-icon>
+                      <h3 matLine class="institute-name"> {{edu.institution_name}} <i class="material-icons verify-icon" *ngIf="edu.verifed">beenhere</i></h3>
+                      <p matLine class="text-medium lh5">
+                        <span> {{edu.degree}}</span>
+                        <span class="demo-2" *ngIf="edu.major != ''"> -- {{edu.major}}</span>
+                      </p>
+                      <p matLine class="lh5">
+                        <span *ngIf="edu.start_year != ''">{{edu.start_year}} </span>
+                        <span class="demo-2" *ngIf="edu.end_year != ''"> -- {{edu.end_year}}</span>
+                      </p>
+                      <p matLine *ngIf="edu.gpa != ''" class="lh5">
+                        <span>GPA: {{edu.gpa}} </span>
+                      </p>
+                      <p matLine *ngIf="edu.description != ''" class="mt4 lh5">
+                        <span> {{edu.description}} </span>
+                      </p>
+                      <p matLine *ngIf="edu.filename != ''">
+                        <pdf-viewer [src]='edu.document' style="display: block;" [show-all]="showAll"
+                          [fit-to-page]="fitToPage" [render-text]="renderText" [stick-to-page]="true" [original-size]="true"></pdf-viewer>
+                      </p>
+                      <button mat-icon-button (click)="OpenEducation(edu)" class="edit">
+                          <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button (click)="deleteEducation(edu,i)" class="edit delete">
+                          <mat-icon>delete</mat-icon>
+                      </button>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div>
+            </mat-list>
+          </div>
+        </mat-card>
+        <mat-card>
+            <div class="title">
+              Skills
+              <button class="icon-add" (click)="addSkill()"><mat-icon class="material-icons">add</mat-icon></button>
+              <!-- <button class="icon-add-btn" (click)="editSkill()"><mat-icon class="material-icons edit">mode_edit</mat-icon></button> -->
+            </div>
+            <div class="body padding-20">
+              <mat-list fxLayout="column">
+                <!-- <div *ngFor="let skills of skill">
+                  <mat-list-item  class="profile-section-item">
+                    <p matLine class="lh5"> {{skills.skillset}} </p>
+                       <p matLine class="lh5">
+                        <span>{{getMonthText(exp.fromMonth)}} {{exp.fromYear}} </span>
+                      </p>
+
+
+                      <button mat-icon-button (click)="addExperience(exp)" class="edit">
+                          <mat-icon>edit</mat-icon>
+                      </button>
+                      <button mat-icon-button (click)="DeleteExperience(exp._id)" class="edit delete">
+                          <mat-icon>delete</mat-icon>
+                      </button>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                  </div> -->
+                  <mat-chip-list>
+                    <mat-chip *ngFor="let skills of skill">{{skills.skillset}}</mat-chip>
+                  </mat-chip-list>
+                </mat-list>
+                <div *ngIf="skill.length == 0">No skills</div>
+            </div>
+        </mat-card>
+        <mat-card>
+          <div class="title">
+            Certifications
+            <span class="remaining-space"></span>
+            <button class="icon-add" (click)="addCertification()">
+                <mat-icon class="material-icons">add</mat-icon>
+            </button>
+          </div>
+          <div class="body">
+            <p *ngIf="certification.length == 0" class="no-result">No certifications</p>
+              <mat-list fxLayout="column">
+                <mat-list-item *ngFor="let cer of certification;let i = index;" class="profile-section-item">
+                    <mat-icon matListIcon>layers</mat-icon>
+                    <h3 matLine class="institute-name"> {{cer.certification_name}} </h3><!-- <i class="material-icons ">beenhere</i> -->
+                    <p matLine class="text-medium lh5">
+                      <span> {{cer.authority}} </span>
+                    </p>
+                    <p matLine class="text-medium lh5">
+                      <span class="demo-2" *ngIf="!cer.license_number != ''"> --  {{cer.license_number}}</span>
+                    </p>
+                    <p matLine class="lh5">
+                      <span>{{cer.start_year}} </span>
+                      <span class="demo-2" *ngIf="!cer.certification_expire"> -- {{cer.end_year}}</span>
+                      <span class="demo-2" *ngIf="cer.certification_expire"> -- Does not expire</span>
+                    </p>
+                    <p matLine *ngIf="cer.certification_url != ''" class="lh5">
+                      <span> {{cer.certification_url}} </span>
+                    </p>
+                    <button mat-icon-button (click)="deleteCertification(cer,i)" class="edit delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="addCertification(cer)" class="edit">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                  </mat-list-item>
+              </mat-list>
+            </div>
+        </mat-card>
+    </div>
+    <div fxFlex="28" class="right-wrapper">
+      <section class="friends">
+          <mat-card class="light-theme">
+            <mat-card-title class="title">Friends</mat-card-title>
+            <mat-card-content>
+                <mat-list role="list" class="frnd-list">
+                  <mat-list-item role="listitem" >
+                      <img src="/assets/images/avatar2.jpg" alt="">
+                      <h3 matLine>Abbey Johnson </h3>
+                      <button mat-button>Follow <i class="material-icons">add</i></button>
+                      <p matLine><small>Lorem ipsum dolor sit amet, consectetur adipisicing</small></p>
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                      <img src="/assets/images/avatar2.jpg" alt="">
+                      <h3 matLine>Abbey Johnson </h3>
+                      <button mat-button>Follow <i class="material-icons">add</i></button>
+                      <p matLine><small>Lorem ipsum dolor sit amet, consectetur adipisicing</small></p>
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                      <img src="/assets/images/avatar2.jpg" alt="">
+                      <h3 matLine>Abbey Johnson</h3>
+                      <button mat-button>Follow <i class="material-icons">add</i></button>
+                      <p matLine><small>Lorem ipsum dolor sit amet, consectetur adipisicing</small></p>
+                  </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+          </mat-card>
+       </section>
+    </div>
+</div>

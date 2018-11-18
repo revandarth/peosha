@@ -1,0 +1,161 @@
+.icon-add{
+  padding: 0;
+  width: 30px;
+  border-radius: 50%;
+  border: 0px;
+  height: 30px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  background-color: #fff;
+  color: #179ede;
+  outline: none;
+  cursor: pointer;
+}
+.institute-name{
+  position: relative;
+}
+.verify-icon{
+  color: #1ebd1e;
+  font-size: 26px;
+  position: absolute;
+  top: 10px;
+  margin-left: 10px;
+}
+.thumbnail{
+    width: 150px;
+    border: 1px solid #ddd;
+    margin-top: 15px !important;
+}
+.heignt-40{
+  height: 40px !important;
+  overflow: hidden;
+}
+.dashboard{
+  background-color: #e5e6e6;
+}
+
+.edit{
+  font-size: 20px;
+  position: absolute;
+  top: 3px;
+  right: 0px;
+  color: #179ede;
+  opacity:0;
+  transition: opacity 0.2s;
+}
+.delete{
+  right: 30px !important;
+}
+.profile-section-item:hover .edit{
+  opacity:1;
+}
+
+.dark-theme{
+    background-color: #20252b;
+    border-color: #20252b;
+    color: #ffffff;
+    padding: 24px;
+}
+.light-theme{
+    background-color: #fff;
+    border-color: #20252b;
+    color: #179ede;
+    padding: 0px;
+}
+.frnd-list .mat-line{
+      padding-left: 40px;
+}
+.frnd-list img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+}
+.body{
+  padding: 20px 0px;
+}
+
+.institute-img{
+  background-color: #b3b6b9;
+  color: #ddd;
+  border-radius: 2px !important;
+  min-width: 60px !important;
+  height: 50px !important;
+}
+.institute-name{
+  line-height: 35px;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #343434;
+}
+.institute-img mat-icon{
+  font-size: 40px;
+  position: absolute;
+  left: 15px;
+  width: auto;
+  height: auto;
+  top: 8px;
+}
+.no-result{
+  padding: 0 28px;
+  margin: 0;
+}
+.remaining-space{
+  flex:1 1 auto;
+}
+.icon-add-btn{
+  padding: 0;
+  width: 30px;
+  border-radius: 50%;
+  border: 0px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: #fff;
+  color: #848786;
+  outline: none;
+  cursor: pointer;
+}
+.profile-section-item::after {
+    content: '';
+    display: block;
+    margin: 16px 0 0 60px;
+}
+.remaining-space{
+  flex:1 1 auto;
+}
+.width-50{
+  width:49%;
+  display: inline-block;
+}
+.padding-14{
+  padding:14px 0px;
+}
+.input {
+  width: 100%;
+}
+
+.padding-top-14{
+   padding-top:14px;
+}
+.follow-text{
+    padding-top: 10px;
+    font-size: 14px;
+    display: block;
+    font-size: 14px;
+    display: block;
+}
+.user-image{
+  /* width: 200px;
+  margin: 0 auto;
+  text-align: center; */
+}
+.label-title{
+  padding-top: 10px;
+}
+
+.title{
+  font: 300 16px Roboto,sans-serif !important;
+}

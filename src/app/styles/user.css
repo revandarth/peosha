@@ -1,0 +1,89 @@
+.bio-container .mat-card{
+  padding: 0px !important;
+}
+.bio-container{
+  heigth:600px;
+}
+.bio-wrapper{
+  position: relative;
+  background-color: #20252b;
+  border-color: #20252b;
+  color: #ffffff;
+  text-shadow: 0 1px 2px #000000;
+  padding: 12px 24px;
+  min-height: 200px;
+}
+.username{
+    line-height: 32px;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-left: 10px;
+}
+.username small{
+   color: rgba(255,255,255,0.5);
+}
+.bio-body{
+  padding: 12px 0px 0px 40px !important;
+}
+.padding-20{
+  padding: 20px;
+}
+.img-drop{
+    background-image: url('/assets/images/default_banner.jpg');
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 225px;
+}
+.user-icon{
+  width: 120px;
+  height: 120px;
+  font-size: 120px;
+  color: #fff;
+}
+.user-info{
+  text-align: center;
+  position: relative;
+  height: auto;
+  background-color: #fff;
+  width: 97%;
+  left: 0px;
+  padding: 20px;
+  text-shadow: none;
+  color: #313534;
+}
+.width-3, .size-3 {
+    width: 120px;
+}
+.remaining-space{
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+.stick-top-left, .stick-bottom-left, .stick-top-left-right, .stick-bottom-left-right {
+    left: 0;
+}
+.stick-bottom-left, .stick-bottom-right, .stick-bottom-left-right {
+    position: absolute;
+    bottom: 0;
+}
+.overlay-shade-bottom {
+    background-image: -webkit-linear-gradient(top, rgba(12, 12, 12, 0) 0%, rgba(12, 12, 12, 0.6) 100%);
+    background-image: -o-linear-gradient(top, rgba(12, 12, 12, 0) 0%, rgba(12, 12, 12, 0.6) 100%);
+    background-image: linear-gradient(to bottom, rgba(12, 12, 12, 0) 0%, rgba(12, 12, 12, 0.6) 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000c0c0c', endColorstr='#990c0c0c', GradientType=0);
+}
+.overlay {
+  position: absolute;
+  right: 15px;
+  padding: 15px;
+  text-align: right;
+}

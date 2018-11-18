@@ -1,0 +1,60 @@
+<div fxLayout="row" fxLayoutAlign="start start">
+  <div fxFlex="70">
+    <mat-card *ngIf="job_info != null" class="p2">
+      <div fxFlex="15">
+        <img src='assets/images/company-default.jpg' width="100"/>
+      </div>
+      <div fxFlex="85">
+        <div class="job-card-title lh5 job-card-content">{{job_info.designation}}</div>
+        <div *ngFor="let org of job_info.org_details" class="lh5">
+            <a href="javascript:void(0)" class="job-card-content">{{org.name}}</a>
+        </div>
+        <div class="job-card-content">{{job_info.location }}</div>
+        <div class="job-card-content">{{job_info.createdAt | timeAgo }}</div>
+        <div class="mt4">
+          <button mat-raised-button class="btn-brand" (click)="savejob($event,job_info);" [disabled]="job_info.is_saved">{{job_info.is_saved?'Saved':'Save'}}</button>
+          <button mat-raised-button class="btn-brand" (click)="addExperience();" *ngIf="!job_info.notification.notify_type && !job_info.applied">Apply</button>
+          <button mat-raised-button class="btn-brand" (click)="easyApply();" >Easy apply</button>
+          <!-- *ngIf="job_info.notification.notify_type && !job_info.applied" -->
+          <button  mat-raised-button disabled *ngIf="job_info.applied" class="applied-btn"><i class="material-icons">done</i> Applied</button>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="job_info != null" class="p2 mt4">
+      <div fxFlex="100">
+        <div class="job-card-title lh5 job-card-content">Job description</div>
+        <p>{{job_info.description}}</p>
+        <div class="job-card-title lh5 job-card-content">Skills</div>
+        <p>{{job_info.skills}}</p>
+      </div>
+      <div fxFlex="100">
+        <div class="lh5 job-card-content mt4">
+          <div class="text-medium ">Seniority level</div>
+          <div class="text-light ">{{seniorLevel[job_info.experience]}}</div>
+        </div>
+        <div class="lh5 job-card-content mt4">
+          <div class="text-medium">Employment type</div>
+          <div class="text-light ">{{employmentType[job_info.employment_type]}}</div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="job_info != null" class="p2 mt4">
+      <div fxFlex="100">
+        <div *ngFor="let org of job_info.org_details">
+          <div class="job-card-title lh5 job-card-content">About us</div>
+          <p>{{org.desc}}</p>
+          <div class="lh5 job-card-content">
+            <div class="text-medium ">Learn more about us at {{job_info.website}}</div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <!-- <div fxFlex="28" class="right-wrapper">
+    <section class="friends">
+        <mat-card class="light-theme">
+
+        </mat-card>
+    </section>
+  </div> -->
+</div>
